@@ -9,6 +9,7 @@ const NavLinks = () => {
 
   const openDropDown = () => {
     setOpen(!open);
+    console.log();
   };
 
   return (
