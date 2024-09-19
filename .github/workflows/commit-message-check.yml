@@ -1,0 +1,27 @@
+name: 'Validate Commit Message'
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize]
+
+jobs:
+  check-commit-message:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Validate commit message
+        run: |
+          PR_TITLE=$(jq -r .pull_request.title < $GITHUB_EVENT_PATH)
+          if ! [[ "$PR_TITLE" =~ ^(feat|fix|docs|style|refactor|perf|build|ci|test|chore)\: ]]; then
+            echo "ERROR: Invalid commit message format."
+            echo "Commit message should be in the format of:"
+            echo "  <type>(<scope>): <description>"
+            echo "Examples:"
+            echo "  feat(lang): added English"
+            echo "  fix: fixed some minor bugs"
+            echo "  feat!: Added access rights management"
+            echo "For more information, visit: https://www.conventionalcommits.org/"
+            exit 1
+          fi
