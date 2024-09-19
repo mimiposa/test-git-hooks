@@ -14,7 +14,7 @@ jobs:
       - name: Validate commit message
         run: |
           PR_TITLE=$(jq -r .pull_request.title < $GITHUB_EVENT_PATH)
-          if ! [[ "$PR_TITLE" =~ ^(feat|fix|docs|style|refactor|test|chore|build|ci|perf|revert|release)\: ]]; then
+          if ! [[ "$PR_TITLE" =/^(feat|fix|docs|style|refactor|test|chore|build|ci|perf|revert|release)(\(\w+\))?: .{1,50}(\n\n.*)?(\n\n(BREAKING CHANGE: .+|.+#\d+))?$/ ]]; then
             echo "ERROR: Invalid commit message format."
             echo "Commit message should be in the format of:"
             echo "  <type>(<scope>): <description>"
