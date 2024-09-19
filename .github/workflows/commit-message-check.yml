@@ -14,14 +14,8 @@ jobs:
       - name: Validate commit message
         run: |
           PR_TITLE=$(jq -r .pull_request.title < $GITHUB_EVENT_PATH)
-          if ! [[ "$PR_TITLE" =/^(feat|fix|docs|style|refactor|test|chore|build|ci|perf|revert|release)(\(\w+\))?: .{1,50}(\n\n.*)?(\n\n(BREAKING CHANGE: .+|.+#\d+))?$/ ]]; then
-            echo "ERROR: Invalid commit message format."
-            echo "Commit message should be in the format of:"
-            echo "  <type>(<scope>): <description>"
-            echo "Examples:"
-            echo "  feat(lang): added English"
-            echo "  fix: fixed some minor bugs"
-            echo "  feat!: Added access rights management"
-            echo "For more information, visit: https://www.conventionalcommits.org/"
+          if ! [[ "$PR_TITLE" =~ ^(feat|fix|docs|style|refactor|test|chore|build|ci|perf|revert|release)(\(\w+\))?:\ .{1,50}(\n\n.*)?(\n\n(BREAKING\ CHANGE:\ .+|.+#\d+))?$ ]]; then
+            echo "Invalid commit message format. Please follow the conventional commit format."
+            echo "Expected format: <type>(<scope>): <description>, with valid types: (feat, fix, docs, style, refactor, test, chore, build, ci, perf, revert, release)."
             exit 1
           fi
