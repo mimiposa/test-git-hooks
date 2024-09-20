@@ -1,16 +1,16 @@
 ### What type of PR is this ? (multiple choices possible)
 
-- [] Feature
-- [] Bug Fix
-- [] Documentation Update
-- [] Style
-- [] Code Refactor
-- [] Performance Improvements
-- [] Test
-- [] Build
-- [] CI
-- [] Chore
-- [] Revert
+- [ ] Feature
+- [ ] Bug Fix
+- [ ] Documentation Update
+- [ ] Style
+- [ ] Code Refactor
+- [ ] Performance Improvements
+- [ ] Test
+- [ ] Build
+- [ ] CI
+- [ ] Chore
+- [ ] Revert
 
 ### Description of the changes
 
@@ -26,16 +26,16 @@
 
 ### Added unit tests ?
 
-- [] Yes
-- [] No, because they aren't need
-- [] no, because i need help
+- [ ] Yes
+- [ ] No, because they aren't need
+- [ ] no, because i need help
 
 ### Added documentation ?
 
-- [] README.md
-- [] Confluence
-- [] Storybook
-- [] No documentation needed
+- [ ] README.md
+- [ ] Confluence
+- [ ] Storybook
+- [ ] No documentation needed
 
 ### Are there any post-deployement task that need to be performed
 
